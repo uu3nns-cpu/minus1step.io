@@ -3,7 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1:1 썸네일 생성기</title>
+    <title>썸네일 스튜디오 - 무료 블로그 썸네일 제작 도구</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="무료로 다양한 비율(1:1, 9:16, 16:9 등)의 블로그 썸네일을 쉽고 빠르게 제작하세요. 12가지 프리셋, 한글 폰트 지원, 실시간 미리보기로 전문적인 썸네일을 만들어보세요.">
+    <meta name="keywords" content="썸네일 제작, 블로그 썸네일, 썸네일 생성기, 무료 디자인 도구, 티스토리 썸네일, 네이버 블로그 썸네일, SNS 이미지">
+    <meta name="author" content="minus1step">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://minus1step.tistory.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://minus1step.tistory.com/">
+    <meta property="og:title" content="썸네일 스튜디오 - 무료 블로그 썸네일 제작 도구">
+    <meta property="og:description" content="무료로 다양한 비율의 블로그 썸네일을 쉽고 빠르게 제작하세요. 12가지 프리셋과 한글 폰트 지원.">
+    <meta property="og:image" content="https://minus1step.tistory.com/thumbnail-preview.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://minus1step.tistory.com/">
+    <meta property="twitter:title" content="썸네일 스튜디오 - 무료 블로그 썸네일 제작 도구">
+    <meta property="twitter:description" content="무료로 다양한 비율의 블로그 썸네일을 쉽고 빠르게 제작하세요.">
+    <meta property="twitter:image" content="https://minus1step.tistory.com/thumbnail-preview.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#667eea">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RWS3BEEQ84"></script>
@@ -18,863 +45,340 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9257454501555292"
          crossorigin="anonymous"></script>
     
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Black+Han+Sans&family=Jua&family=Nanum+Gothic:wght@400;700;800&family=Do+Hyeon&family=Gamja+Flower&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-            background: #f5f5f7;
-            min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            background: white;
-            border-radius: 18px;
-            padding: 40px;
-            max-width: 1400px;
-            width: 100%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 32px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid #e5e5e7;
-        }
-
-        h1 {
-            color: #1d1d1f;
-            margin-bottom: 8px;
-            font-size: 2.2em;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        .credit {
-            font-size: 0.95em;
-            color: #86868b;
-            margin-top: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .blog-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #f5f5f7;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            color: #1d1d1f;
-            text-decoration: none;
-            transition: all 0.2s;
-            border: 1px solid #e5e5e7;
-        }
-
-        .blog-badge:hover {
-            background: #e8e8ed;
-            border-color: #d2d2d7;
-        }
-
-        .main-layout {
-            display: grid;
-            grid-template-columns: 1fr 480px;
-            gap: 32px;
-        }
-
-        .preview-section {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .section-title {
-            color: #1d1d1f;
-            font-size: 1.1em;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-
-        #canvas {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.1);
-            background: #fafafa;
-        }
-
-        .download-btn {
-            padding: 14px 28px;
-            background: #007aff;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1em;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            letter-spacing: -0.01em;
-        }
-
-        .download-btn:hover {
-            background: #0051d5;
-        }
-
-        .download-btn:active {
-            transform: scale(0.98);
-        }
-
-        .controls {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .control-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            overflow: hidden;
-        }
-
-        label {
-            font-weight: 500;
-            color: #1d1d1f;
-            font-size: 0.9em;
-            letter-spacing: -0.01em;
-        }
-
-        input[type="text"],
-        textarea,
-        select {
-            padding: 12px 14px;
-            border: 1px solid #d2d2d7;
-            border-radius: 10px;
-            font-size: 0.95em;
-            transition: all 0.2s;
-            font-family: inherit;
-            background: white;
-            color: #1d1d1f;
-        }
-
-        input[type="text"]:focus,
-        textarea:focus,
-        select:focus {
-            outline: none;
-            border-color: #007aff;
-            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-            line-height: 1.5;
-        }
-
-        .color-input-group {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        input[type="color"] {
-            width: 80px;
-            height: 44px;
-            border: 1px solid #d2d2d7;
-            border-radius: 10px;
-            cursor: pointer;
-            background: white;
-            padding: 4px;
-        }
-
-        input[type="text"].color-text {
-            flex: 1;
-            min-width: 0;
-            max-width: calc(100% - 90px);
-        }
-
-        .color-palette {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 6px;
-            margin-top: 8px;
-            width: 100%;
-        }
-
-        .color-swatch {
-            width: 100%;
-            aspect-ratio: 1;
-            border-radius: 8px;
-            cursor: pointer;
-            border: 2px solid #e5e5e7;
-            transition: all 0.2s;
-        }
-
-        .color-swatch:hover {
-            transform: scale(1.1);
-            border-color: #007aff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-
-        .style-presets {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .preset-btn {
-            padding: 0;
-            background: white;
-            border: 1.5px solid #d2d2d7;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            overflow: hidden;
-        }
-
-        .preset-content {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding: 10px;
-        }
-
-        .preset-preview {
-            width: 100%;
-            height: 60px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2em;
-            letter-spacing: -0.02em;
-        }
-
-        .preset-name {
-            font-size: 0.85em;
-            font-weight: 500;
-            color: #1d1d1f;
-            text-align: center;
-        }
-
-        .preset-btn:hover {
-            border-color: #007aff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-
-        .preset-btn.active {
-            border-color: #007aff;
-            border-width: 2px;
-            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
-        }
-
-        .slider-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        input[type="range"] {
-            flex: 1;
-            height: 4px;
-            border-radius: 4px;
-            background: #d2d2d7;
-            outline: none;
-            -webkit-appearance: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: white;
-            cursor: pointer;
-            border: 1px solid #d2d2d7;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: white;
-            cursor: pointer;
-            border: 1px solid #d2d2d7;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-        }
-
-        .slider-value {
-            min-width: 48px;
-            text-align: center;
-            font-weight: 500;
-            color: #007aff;
-            font-size: 0.9em;
-        }
-
-        .two-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            width: 100%;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px;
-            background: #f5f5f7;
-            border-radius: 8px;
-        }
-
-        input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        .checkbox-group label {
-            margin: 0;
-            cursor: pointer;
-        }
-
-        @media (max-width: 1024px) {
-            .main-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .preview-section {
-                order: -1;
-            }
-
-            .style-presets {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 24px;
-            }
-
-            h1 {
-                font-size: 1.6em;
-            }
-
-            .two-columns {
-                grid-template-columns: 1fr;
-            }
-
-            .style-presets {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .color-palette {
-                grid-template-columns: repeat(6, 1fr);
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Black+Han+Sans&family=Jua&family=Nanum+Gothic:wght@400;700;800&family=Do+Hyeon&family=Gamja+Flower&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Sunflower:wght@300;500;700&family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Gugi&family=Poor+Story&family=East+Sea+Dokdo&family=Single+Day&family=Stylish&family=Hi+Melody&family=Cute+Font&family=Dokdo&family=Gaegu:wght@300;400;700&family=Song+Myung&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="bulma-style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>✨ 1:1 썸네일 생성기</h1>
-            <div class="credit">
+    <div class="container is-max-widescreen">
+        <div class="glass-container">
+            <!-- Header -->
+            <div class="glass-header">
+                <h1>✨ 썸네일 스튜디오</h1>
+                <p class="subtitle">다양한 비율로 손쉽게 만드는 블로그 썸네일</p>
                 <a href="https://minus1step.tistory.com/" target="_blank" rel="noopener noreferrer" class="blog-badge">
                     🌐 minus1step.tistory.com
                 </a>
             </div>
-        </div>
 
-        <div class="main-layout">
-            <div class="preview-section">
-                <h2 class="section-title">미리보기</h2>
-                <canvas id="canvas" width="1000" height="1000"></canvas>
-                <button class="download-btn" onclick="downloadThumbnail()">💾 다운로드</button>
-            </div>
-
-            <div class="controls">
-                <div class="control-group">
-                    <label>스타일 프리셋</label>
-                    <div class="style-presets">
-                        <button class="preset-btn active" onclick="applyPreset('modern')">
-                            <div class="preset-content">
-                                <div class="preset-preview" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">Aa</div>
-                                <div class="preset-name">모던</div>
-                            </div>
-                        </button>
-                        <button class="preset-btn" onclick="applyPreset('gradient')">
-                            <div class="preset-content">
-                                <div class="preset-preview" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">Aa</div>
-                                <div class="preset-name">그라디언트</div>
-                            </div>
-                        </button>
-                        <button class="preset-btn" onclick="applyPreset('minimal')">
-                            <div class="preset-content">
-                                <div class="preset-preview" style="background: #ffffff; color: #333333; border: 2px solid #e5e5e7;">Aa</div>
-                                <div class="preset-name">미니멀</div>
-                            </div>
-                        </button>
-                        <button class="preset-btn" onclick="applyPreset('bold')">
-                            <div class="preset-content">
-                                <div class="preset-preview" style="background: #000000; color: #ffff00;">Aa</div>
-                                <div class="preset-name">볼드</div>
-                            </div>
-                        </button>
-                        <button class="preset-btn" onclick="applyPreset('soft')">
-                            <div class="preset-content">
-                                <div class="preset-preview" style="background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%); color: #2d3436;">Aa</div>
-                                <div class="preset-name">소프트</div>
-                            </div>
-                        </button>
-                        <button class="preset-btn" onclick="applyPreset('ocean')">
-                            <div class="preset-content">
-                                <div class="preset-preview" style="background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); color: white;">Aa</div>
-                                <div class="preset-name">오션</div>
-                            </div>
-                        </button>
-                        <button class="preset-btn" onclick="applyPreset('sunset')">
-                            <div class="preset-content">
-                                <div class="preset-preview" style="background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%); color: white;">Aa</div>
-                                <div class="preset-name">선셋</div>
-                            </div>
-                        </button>
-                        <button class="preset-btn" onclick="applyPreset('forest')">
-                            <div class="preset-content">
-                                <div class="preset-preview" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white;">Aa</div>
-                                <div class="preset-name">포레스트</div>
-                            </div>
-                        </button>
-                        <button class="preset-btn" onclick="applyPreset('dark')">
-                            <div class="preset-content">
-                                <div class="preset-preview" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white;">Aa</div>
-                                <div class="preset-name">다크</div>
-                            </div>
-                        </button>
-                        <button class="preset-btn" onclick="applyPreset('neon')">
-                            <div class="preset-content">
-                                <div class="preset-preview" style="background: #1a1a2e; color: #00ff88;">Aa</div>
-                                <div class="preset-name">네온</div>
-                            </div>
-                        </button>
-                        <button class="preset-btn" onclick="applyPreset('pastel')">
-                            <div class="preset-content">
-                                <div class="preset-preview" style="background: linear-gradient(135deg, #ffeaa7 0%, #dfe6e9 100%); color: #2d3436;">Aa</div>
-                                <div class="preset-name">파스텔</div>
-                            </div>
-                        </button>
-                        <button class="preset-btn" onclick="applyPreset('berry')">
-                            <div class="preset-content">
-                                <div class="preset-preview" style="background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%); color: white;">Aa</div>
-                                <div class="preset-name">베리</div>
-                            </div>
-                        </button>
+            <!-- Main Content -->
+            <div class="columns is-variable is-6">
+                <!-- Preview Section -->
+                <div class="column is-7">
+                    <div class="preview-glass">
+                        <h2 class="section-title">미리보기</h2>
+                        <canvas id="canvas" width="1000" height="1000" role="img" aria-label="생성된 썸네일 미리보기"></canvas>
                     </div>
-                </div>
-
-                <div class="control-group">
-                    <label>썸네일 텍스트</label>
-                    <textarea id="thumbnailText" placeholder="썸네일에 표시할 텍스트를 입력하세요...">블로그 썸네일 생성기</textarea>
-                </div>
-
-                <div class="two-columns">
-                    <div class="control-group">
-                        <label>배경색</label>
-                        <div class="color-input-group">
-                            <input type="color" id="bgColor" value="#667eea">
-                            <input type="text" id="bgColorText" class="color-text" value="#667eea">
-                        </div>
-                        <div class="color-palette" id="bgPalette"></div>
-                    </div>
-
-                    <div class="control-group">
-                        <label>글자색</label>
-                        <div class="color-input-group">
-                            <input type="color" id="textColor" value="#ffffff">
-                            <input type="text" id="textColorText" class="color-text" value="#ffffff">
-                        </div>
-                        <div class="color-palette" id="textPalette"></div>
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <label>글꼴</label>
-                    <select id="fontFamily">
-                        <option value="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">Apple SD 산돌고딕 Neo</option>
-                        <option value="'Noto Sans KR', sans-serif">Noto Sans KR</option>
-                        <option value="'Malgun Gothic', sans-serif">맑은 고딕</option>
-                        <option value="'Nanum Gothic', sans-serif">나눔고딕</option>
-                        <option value="'Black Han Sans', sans-serif">검은고딕</option>
-                        <option value="'Do Hyeon', sans-serif">도현체</option>
-                        <option value="'Jua', sans-serif">주아체</option>
-                        <option value="'Gamja Flower', cursive">감자꽃체</option>
-                        <option value="'Segoe UI', sans-serif">Segoe UI</option>
-                        <option value="'Arial Black', sans-serif">Arial Black</option>
-                        <option value="Impact, sans-serif">Impact</option>
-                        <option value="'Comic Sans MS', cursive">Comic Sans</option>
-                        <option value="'Courier New', monospace">Courier New</option>
-                        <option value="Georgia, serif">Georgia</option>
-                    </select>
-                </div>
-
-                <div class="control-group">
-                    <label>글자 크기 조절 (%)</label>
-                    <div class="slider-group">
-                        <input type="range" id="fontSizeScale" min="50" max="150" value="100" step="5">
-                        <span class="slider-value" id="fontSizeValue">100%</span>
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="textStroke">
-                        <label for="textStroke">글자 테두리 추가</label>
-                    </div>
-                </div>
-
-                <div class="control-group" id="strokeControls" style="display: none;">
-                    <label>테두리 색상</label>
-                    <div class="color-input-group">
-                        <input type="color" id="strokeColor" value="#000000">
-                        <input type="text" id="strokeColorText" class="color-text" value="#000000">
-                    </div>
-                    <div class="color-palette" id="strokePalette"></div>
                     
-                    <label style="margin-top: 10px;">테두리 두께</label>
-                    <div class="slider-group">
-                        <input type="range" id="strokeWidth" min="1" max="20" value="8" step="1">
-                        <span class="slider-value" id="strokeWidthValue">8px</span>
+                    <!-- Action Buttons -->
+                    <div class="button-group">
+                        <button class="button is-primary action-button" onclick="downloadThumbnail()" aria-label="썸네일 다운로드">
+                            <span class="icon">💾</span>
+                            <span id="downloadText">다운로드</span>
+                        </button>
+                        <button class="button action-button random-button" onclick="randomizeStyle()" aria-label="랜덤 스타일 생성">
+                            <span class="icon">🎲</span>
+                            <span>랜덤</span>
+                        </button>
+                        <button class="button action-button reset-button" onclick="resetSettings()" aria-label="설정 초기화">
+                            <span class="icon">🔄</span>
+                            <span>초기화</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Controls Section -->
+                <div class="column is-5">
+                    <!-- Tabs -->
+                    <div class="control-glass" style="margin-bottom: 1rem;">
+                        <div class="tabs-container">
+                            <button class="tab-button active" onclick="switchTab('basic')">기본 설정</button>
+                            <button class="tab-button" onclick="switchTab('advanced')">고급 설정</button>
+                        </div>
+                    </div>
+
+                    <!-- Basic Tab Content -->
+                    <div id="basicTab" class="tab-content active">
+                        <!-- Text Input -->
+                        <div class="control-glass">
+                            <div class="field">
+                                <label class="label" for="thumbnailText">썸네일 텍스트</label>
+                                <div class="control">
+                                    <textarea class="textarea" id="thumbnailText" rows="2" placeholder="썸네일에 표시할 텍스트를 입력하세요..." maxlength="200" aria-describedby="textCounter">블로그 썸네일 생성기</textarea>
+                                </div>
+                                <p id="textCounter" class="help has-text-white" style="text-align: right; margin-top: 0.25rem;">0 / 200자</p>
+                                <div class="emoji-picker">
+                                    <button class="emoji-btn" onclick="insertEmoji('✨')">✨</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('🔥')">🔥</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('💡')">💡</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('🎉')">🎉</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('❤️')">❤️</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('🚀')">🚀</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('🌟')">🌟</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('👍')">👍</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('💯')">💯</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('🎯')">🎯</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('💬')">💬</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('📚')">📚</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('✅')">✅</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('🔔')">🔔</button>
+                                    <button class="emoji-btn" onclick="insertEmoji('🎨')">🎨</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ratio and Style in same row -->
+                        <div class="control-glass">
+                            <label class="label" id="ratioLabel">비율 선택</label>
+                            <div class="ratio-buttons" role="group" aria-labelledby="ratioLabel">
+                                <button class="ratio-button active" onclick="changeRatio('1:1')" aria-pressed="true">1:1</button>
+                                <button class="ratio-button" onclick="changeRatio('9:16')" aria-pressed="false">9:16</button>
+                                <button class="ratio-button" onclick="changeRatio('3:4')" aria-pressed="false">3:4</button>
+                                <button class="ratio-button" onclick="changeRatio('4:3')" aria-pressed="false">4:3</button>
+                                <button class="ratio-button" onclick="changeRatio('16:9')" aria-pressed="false">16:9</button>
+                            </div>
+                        </div>
+
+                        <!-- Style Presets -->
+                        <div class="control-glass">
+                            <label class="label" id="presetLabel">스타일 프리셋</label>
+                            <div class="preset-grid" role="group" aria-labelledby="presetLabel">
+                                <button class="preset-btn-compact active" onclick="applyPreset('modern')" aria-label="모던 스타일" aria-pressed="true">
+                                    <div class="preset-preview-compact" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                                    <span>모던</span>
+                                </button>
+                                <button class="preset-btn-compact" onclick="applyPreset('gradient')">
+                                    <div class="preset-preview-compact" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                                    <span>그라디언트</span>
+                                </button>
+                                <button class="preset-btn-compact" onclick="applyPreset('minimal')">
+                                    <div class="preset-preview-compact" style="background: #ffffff; border: 2px solid #e5e5e7;"></div>
+                                    <span>미니멀</span>
+                                </button>
+                                <button class="preset-btn-compact" onclick="applyPreset('bold')">
+                                    <div class="preset-preview-compact" style="background: #000000;"></div>
+                                    <span>볼드</span>
+                                </button>
+                                <button class="preset-btn-compact" onclick="applyPreset('ocean')">
+                                    <div class="preset-preview-compact" style="background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);"></div>
+                                    <span>오션</span>
+                                </button>
+                                <button class="preset-btn-compact" onclick="applyPreset('sunset')">
+                                    <div class="preset-preview-compact" style="background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);"></div>
+                                    <span>선셋</span>
+                                </button>
+                                <button class="preset-btn-compact" onclick="applyPreset('neon')">
+                                    <div class="preset-preview-compact" style="background: #000000; box-shadow: inset 0 0 10px #00ff88;"></div>
+                                    <span>네온</span>
+                                </button>
+                                <button class="preset-btn-compact" onclick="applyPreset('pastel')">
+                                    <div class="preset-preview-compact" style="background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);"></div>
+                                    <span>파스텔</span>
+                                </button>
+                                <button class="preset-btn-compact" onclick="applyPreset('vintage')">
+                                    <div class="preset-preview-compact" style="background: #d4a574;"></div>
+                                    <span>빈티지</span>
+                                </button>
+                                <button class="preset-btn-compact" onclick="applyPreset('dark')">
+                                    <div class="preset-preview-compact" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);"></div>
+                                    <span>다크</span>
+                                </button>
+                                <button class="preset-btn-compact" onclick="applyPreset('nature')">
+                                    <div class="preset-preview-compact" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);"></div>
+                                    <span>자연</span>
+                                </button>
+                                <button class="preset-btn-compact" onclick="applyPreset('candy')">
+                                    <div class="preset-preview-compact" style="background: linear-gradient(135deg, #ff6ec4 0%, #7873f5 100%);"></div>
+                                    <span>캔디</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Font Size -->
+                        <div class="control-glass">
+                            <div class="field">
+                                <label class="label">글자 크기 조절 (%)</label>
+                                <div class="field has-addons">
+                                    <div class="control is-expanded">
+                                        <input type="range" id="fontSizeScale" min="50" max="180" value="100" step="5">
+                                    </div>
+                                    <div class="control">
+                                        <span class="slider-value" id="fontSizeValue">100%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Tab Content -->
+                    <div id="advancedTab" class="tab-content">
+                        <!-- Recent Colors -->
+                        <div class="control-glass">
+                            <label class="label">최근 사용 색상</label>
+                            <div id="recentColors" class="recent-colors-grid">
+                                <p class="help has-text-white" style="text-align: center; width: 100%;">사용한 색상이 여기에 표시됩니다</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Colors -->
+                        <div class="control-glass">
+                            <div class="color-grid">
+                                <div>
+                                    <label class="label">배경색</label>
+                                    <div class="color-input-group">
+                                        <input type="color" id="bgColor" value="#667eea">
+                                        <input type="text" class="input" id="bgColorText" value="#667eea">
+                                    </div>
+                                    <div class="color-palette" id="bgPalette"></div>
+                                </div>
+                                <div>
+                                    <label class="label">글자색</label>
+                                    <div class="color-input-group">
+                                        <input type="color" id="textColor" value="#ffffff">
+                                        <input type="text" class="input" id="textColorText" value="#ffffff">
+                                    </div>
+                                    <div class="color-palette" id="textPalette"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Font Settings -->
+                        <div class="control-glass">
+                            <div class="field">
+                                <label class="label">글꼴</label>
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        <select id="fontFamily">
+                                            <optgroup label="산세리프 - 라이트">
+                                                <option value="'Noto Sans KR', sans-serif" data-weight="300">Noto Sans KR Light</option>
+                                                <option value="'Gothic A1', sans-serif" data-weight="300">Gothic A1 Light</option>
+                                                <option value="'Nanum Gothic', sans-serif" data-weight="400">나눔고딕</option>
+                                                <option value="'Sunflower', sans-serif" data-weight="300">Sunflower Light</option>
+                                            </optgroup>
+                                            <optgroup label="산세리프 - 레귈러">
+                                                <option value="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif" data-weight="400">Apple SD 산돌고딕 Neo</option>
+                                                <option value="'Noto Sans KR', sans-serif" data-weight="500">Noto Sans KR Medium</option>
+                                                <option value="'Gothic A1', sans-serif" data-weight="500">Gothic A1 Medium</option>
+                                                <option value="'Malgun Gothic', sans-serif" data-weight="400">맑은 고딕</option>
+                                                <option value="'Sunflower', sans-serif" data-weight="500">Sunflower Medium</option>
+                                            </optgroup>
+                                            <optgroup label="산세리프 - 볼드">
+                                                <option value="'Noto Sans KR', sans-serif" data-weight="700">Noto Sans KR Bold</option>
+                                                <option value="'Gothic A1', sans-serif" data-weight="700">Gothic A1 Bold</option>
+                                                <option value="'Nanum Gothic', sans-serif" data-weight="800">나눔고딕 볼드</option>
+                                                <option value="'Sunflower', sans-serif" data-weight="700">Sunflower Bold</option>
+                                            </optgroup>
+                                            <optgroup label="세리프 - 라이트">
+                                                <option value="'Noto Serif KR', serif" data-weight="300">Noto Serif KR Light</option>
+                                                <option value="'Nanum Myeongjo', serif" data-weight="400">나눔명조</option>
+                                            </optgroup>
+                                            <optgroup label="세리프 - 볼드">
+                                                <option value="'Noto Serif KR', serif" data-weight="700">Noto Serif KR Bold</option>
+                                                <option value="'Nanum Myeongjo', serif" data-weight="800">나눔명조 볼드</option>
+                                                <option value="'Song Myung', serif" data-weight="400">송명체</option>
+                                            </optgroup>
+                                            <optgroup label="디스플레이 - 가벼움">
+                                                <option value="'Gaegu', cursive" data-weight="300">개구체 Light</option>
+                                                <option value="'Poor Story', cursive" data-weight="400">훌스토리</option>
+                                                <option value="'Stylish', sans-serif" data-weight="400">스타일리시</option>
+                                            </optgroup>
+                                            <optgroup label="디스플레이 - 근육">
+                                                <option value="'Do Hyeon', sans-serif" data-weight="400">도현체</option>
+                                                <option value="'Jua', sans-serif" data-weight="400">주아체</option>
+                                                <option value="'Single Day', cursive" data-weight="400">싱글데이</option>
+                                                <option value="'Hi Melody', cursive" data-weight="400">하이멜로디</option>
+                                            </optgroup>
+                                            <optgroup label="디스플레이 - 굵게">
+                                                <option value="'Black Han Sans', sans-serif" data-weight="400">검은고딕</option>
+                                                <option value="'Gugi', cursive" data-weight="400">구기체</option>
+                                            </optgroup>
+                                            <optgroup label="손글씨">
+                                                <option value="'Gamja Flower', cursive" data-weight="400">감자꽃체</option>
+                                                <option value="'Cute Font', cursive" data-weight="400">큐트폰트</option>
+                                                <option value="'Dokdo', cursive" data-weight="400">독도체</option>
+                                                <option value="'East Sea Dokdo', cursive" data-weight="400">동해독도체</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stroke Settings -->
+                        <div class="control-glass">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="textStroke">
+                                <label for="textStroke">글자 테두리 추가</label>
+                            </div>
+
+                            <div id="strokeControls" style="display: none; margin-top: 1rem;">
+                                <div class="field">
+                                    <label class="label">테두리 색상</label>
+                                    <div class="color-input-group">
+                                        <input type="color" id="strokeColor" value="#000000">
+                                        <input type="text" class="input" id="strokeColorText" value="#000000">
+                                    </div>
+                                    <div class="color-palette" id="strokePalette"></div>
+                                </div>
+
+                                <div class="field" style="margin-top: 1rem;">
+                                    <label class="label">테두리 두께</label>
+                                    <div class="field has-addons">
+                                        <div class="control is-expanded">
+                                            <input type="range" id="strokeWidth" min="1" max="20" value="8" step="1">
+                                        </div>
+                                        <div class="control">
+                                            <span class="slider-value" id="strokeWidthValue">8px</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Canvas Border Settings -->
+                        <div class="control-glass">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="canvasBorder">
+                                <label for="canvasBorder">썸네일 테두리 추가</label>
+                            </div>
+
+                            <div id="borderControls" style="display: none; margin-top: 1rem;">
+                                <div class="field">
+                                    <label class="label">테두리 색상</label>
+                                    <div class="color-input-group">
+                                        <input type="color" id="borderColor" value="#ffffff">
+                                        <input type="text" class="input" id="borderColorText" value="#ffffff">
+                                    </div>
+                                    <div class="color-palette" id="borderPalette"></div>
+                                </div>
+
+                                <div class="field" style="margin-top: 1rem;">
+                                    <label class="label">테두리 두께</label>
+                                    <div class="field has-addons">
+                                        <div class="control is-expanded">
+                                            <input type="range" id="borderWidth" min="5" max="100" value="20" step="5">
+                                        </div>
+                                        <div class="control">
+                                            <span class="slider-value" id="borderWidthValue">20px</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        const colorPalettes = {
-            background: [
-                '#667eea', '#f093fb', '#00c6ff', '#ff6b6b',
-                '#11998e', '#ffeaa7', '#2c3e50', '#1a1a2e',
-                '#ee0979', '#764ba2', '#0072ff', '#38ef7d',
-                '#feca57', '#fab1a0', '#34495e', '#dfe6e9'
-            ],
-            text: [
-                '#ffffff', '#000000', '#333333', '#ffff00',
-                '#00ff88', '#ff6b6b', '#667eea', '#2d3436',
-                '#f5f5f5', '#1a1a1a', '#feca57', '#00c6ff',
-                '#ee0979', '#38ef7d', '#fab1a0', '#764ba2'
-            ],
-            stroke: [
-                '#000000', '#ffffff', '#333333', '#ffff00',
-                '#ff0000', '#00ff00', '#0000ff', '#ff6b6b',
-                '#667eea', '#2c3e50', '#1a1a2e', '#764ba2',
-                '#ee0979', '#38ef7d', '#fab1a0', '#feca57'
-            ]
-        };
-
-        const presets = {
-            modern: {
-                bgColor: '#667eea',
-                textColor: '#ffffff',
-                gradient: true,
-                gradientColor: '#764ba2'
-            },
-            gradient: {
-                bgColor: '#f093fb',
-                textColor: '#ffffff',
-                gradient: true,
-                gradientColor: '#f5576c'
-            },
-            minimal: {
-                bgColor: '#ffffff',
-                textColor: '#333333',
-                gradient: false
-            },
-            bold: {
-                bgColor: '#000000',
-                textColor: '#ffff00',
-                gradient: false
-            },
-            soft: {
-                bgColor: '#ffeaa7',
-                textColor: '#2d3436',
-                gradient: true,
-                gradientColor: '#fab1a0'
-            },
-            ocean: {
-                bgColor: '#00c6ff',
-                textColor: '#ffffff',
-                gradient: true,
-                gradientColor: '#0072ff'
-            },
-            sunset: {
-                bgColor: '#ff6b6b',
-                textColor: '#ffffff',
-                gradient: true,
-                gradientColor: '#feca57'
-            },
-            forest: {
-                bgColor: '#11998e',
-                textColor: '#ffffff',
-                gradient: true,
-                gradientColor: '#38ef7d'
-            },
-            dark: {
-                bgColor: '#2c3e50',
-                textColor: '#ffffff',
-                gradient: true,
-                gradientColor: '#34495e'
-            },
-            neon: {
-                bgColor: '#1a1a2e',
-                textColor: '#00ff88',
-                gradient: false
-            },
-            pastel: {
-                bgColor: '#ffeaa7',
-                textColor: '#2d3436',
-                gradient: true,
-                gradientColor: '#dfe6e9'
-            },
-            berry: {
-                bgColor: '#ee0979',
-                textColor: '#ffffff',
-                gradient: true,
-                gradientColor: '#ff6a00'
-            }
-        };
-
-        let currentPreset = 'modern';
-
-        function initColorPalettes() {
-            const bgPalette = document.getElementById('bgPalette');
-            const textPalette = document.getElementById('textPalette');
-            const strokePalette = document.getElementById('strokePalette');
-
-            colorPalettes.background.forEach(color => {
-                const swatch = document.createElement('div');
-                swatch.className = 'color-swatch';
-                swatch.style.background = color;
-                swatch.onclick = () => {
-                    document.getElementById('bgColor').value = color;
-                    document.getElementById('bgColorText').value = color;
-                    generateThumbnail();
-                };
-                bgPalette.appendChild(swatch);
-            });
-
-            colorPalettes.text.forEach(color => {
-                const swatch = document.createElement('div');
-                swatch.className = 'color-swatch';
-                swatch.style.background = color;
-                swatch.onclick = () => {
-                    document.getElementById('textColor').value = color;
-                    document.getElementById('textColorText').value = color;
-                    generateThumbnail();
-                };
-                textPalette.appendChild(swatch);
-            });
-
-            colorPalettes.stroke.forEach(color => {
-                const swatch = document.createElement('div');
-                swatch.className = 'color-swatch';
-                swatch.style.background = color;
-                swatch.onclick = () => {
-                    document.getElementById('strokeColor').value = color;
-                    document.getElementById('strokeColorText').value = color;
-                    generateThumbnail();
-                };
-                strokePalette.appendChild(swatch);
-            });
-        }
-
-        document.getElementById('bgColor').addEventListener('input', (e) => {
-            document.getElementById('bgColorText').value = e.target.value;
-            generateThumbnail();
-        });
-
-        document.getElementById('bgColorText').addEventListener('input', (e) => {
-            const color = e.target.value;
-            if (/^#[0-9A-F]{6}$/i.test(color)) {
-                document.getElementById('bgColor').value = color;
-                generateThumbnail();
-            }
-        });
-
-        document.getElementById('textColor').addEventListener('input', (e) => {
-            document.getElementById('textColorText').value = e.target.value;
-            generateThumbnail();
-        });
-
-        document.getElementById('textColorText').addEventListener('input', (e) => {
-            const color = e.target.value;
-            if (/^#[0-9A-F]{6}$/i.test(color)) {
-                document.getElementById('textColor').value = color;
-                generateThumbnail();
-            }
-        });
-
-        document.getElementById('strokeColor').addEventListener('input', (e) => {
-            document.getElementById('strokeColorText').value = e.target.value;
-            generateThumbnail();
-        });
-
-        document.getElementById('strokeColorText').addEventListener('input', (e) => {
-            const color = e.target.value;
-            if (/^#[0-9A-F]{6}$/i.test(color)) {
-                document.getElementById('strokeColor').value = color;
-                generateThumbnail();
-            }
-        });
-
-        document.getElementById('textStroke').addEventListener('change', (e) => {
-            document.getElementById('strokeControls').style.display = e.target.checked ? 'flex' : 'none';
-            generateThumbnail();
-        });
-
-        document.getElementById('strokeWidth').addEventListener('input', (e) => {
-            document.getElementById('strokeWidthValue').textContent = e.target.value + 'px';
-            generateThumbnail();
-        });
-
-        document.getElementById('thumbnailText').addEventListener('input', generateThumbnail);
-        document.getElementById('fontFamily').addEventListener('change', generateThumbnail);
-        
-        document.getElementById('fontSizeScale').addEventListener('input', (e) => {
-            document.getElementById('fontSizeValue').textContent = e.target.value + '%';
-            generateThumbnail();
-        });
-
-        function applyPreset(presetName) {
-            document.querySelectorAll('.preset-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.closest('.preset-btn').classList.add('active');
-            
-            const preset = presets[presetName];
-            currentPreset = presetName;
-            
-            document.getElementById('bgColor').value = preset.bgColor;
-            document.getElementById('bgColorText').value = preset.bgColor;
-            document.getElementById('textColor').value = preset.textColor;
-            document.getElementById('textColorText').value = preset.textColor;
-            
-            generateThumbnail();
-        }
-
-        function wrapText(ctx, text, maxWidth) {
-            const words = text.split(' ');
-            const lines = [];
-            let currentLine = words[0];
-
-            for (let i = 1; i < words.length; i++) {
-                const word = words[i];
-                const width = ctx.measureText(currentLine + ' ' + word).width;
-                if (width < maxWidth) {
-                    currentLine += ' ' + word;
-                } else {
-                    lines.push(currentLine);
-                    currentLine = word;
-                }
-            }
-            lines.push(currentLine);
-            return lines;
-        }
-
-        function generateThumbnail() {
-            const canvas = document.getElementById('canvas');
-            const ctx = canvas.getContext('2d');
-            const text = document.getElementById('thumbnailText').value.trim();
-            
-            if (!text) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                return;
-            }
-
-            const bgColor = document.getElementById('bgColor').value;
-            const textColor = document.getElementById('textColor').value;
-            const preset = presets[currentPreset];
-            const fontFamily = document.getElementById('fontFamily').value;
-            const fontSizeScale = parseInt(document.getElementById('fontSizeScale').value) / 100;
-            const hasStroke = document.getElementById('textStroke').checked;
-            const strokeColor = document.getElementById('strokeColor').value;
-            const strokeWidth = parseInt(document.getElementById('strokeWidth').value);
-
-            // 배경 그리기
-            if (preset.gradient) {
-                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-                gradient.addColorStop(0, bgColor);
-                gradient.addColorStop(1, preset.gradientColor);
-                ctx.fillStyle = gradient;
-            } else {
-                ctx.fillStyle = bgColor;
-            }
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // 텍스트 설정
-            const baseFontSize = 100;
-            const fontSize = baseFontSize * fontSizeScale;
-            ctx.font = `900 ${fontSize}px ${fontFamily}`;
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-
-            // 텍스트를 줄바꿈 처리
-            const maxWidth = canvas.width * 0.85;
-            const lines = wrapText(ctx, text, maxWidth);
-            const lineHeight = fontSize * 1.3;
-            const totalHeight = lines.length * lineHeight;
-            const startY = (canvas.height - totalHeight) / 2 + lineHeight / 2;
-
-            // 텍스트 그리기
-            lines.forEach((line, index) => {
-                const y = startY + index * lineHeight;
-                
-                // 테두리 그리기
-                if (hasStroke) {
-                    ctx.strokeStyle = strokeColor;
-                    ctx.lineWidth = strokeWidth;
-                    ctx.lineJoin = 'round';
-                    ctx.miterLimit = 2;
-                    ctx.strokeText(line, canvas.width / 2, y);
-                }
-                
-                // 텍스트 그리기
-                ctx.fillStyle = textColor;
-                ctx.fillText(line, canvas.width / 2, y);
-            });
-        }
-
-        function downloadThumbnail() {
-            const canvas = document.getElementById('canvas');
-            const link = document.createElement('a');
-            link.download = 'thumbnail.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        }
-
-        // 초기화
-        window.addEventListener('load', () => {
-            initColorPalettes();
-            generateThumbnail();
-        });
-    </script>
+    <!-- JavaScript -->
+    <script src="bulma-app.js"></script>
 </body>
 </html>
