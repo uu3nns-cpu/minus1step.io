@@ -6,31 +6,18 @@
     <title>썸네일 스튜디오 - 무료 블로그 썸네일 제작 도구</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="무료로 다양한 비율(1:1, 9:16, 16:9 등)의 블로그 썸네일을 쉽고 빠르게 제작하세요. 12가지 프리셋, 한글 폰트 지원, 실시간 미리보기로 전문적인 썸네일을 만들어보세요.">
-    <meta name="keywords" content="썸네일 제작, 블로그 썸네일, 썸네일 생성기, 무료 디자인 도구, 티스토리 썸네일, 네이버 블로그 썸네일, SNS 이미지">
+    <meta name="description" content="무료로 다양한 비율(1:1, 9:16, 16:9 등)의 블로그 썸네일을 쉽고 빠르게 제작하세요.">
+    <meta name="keywords" content="썸네일 제작, 블로그 썸네일, 썸네일 생성기, 무료 디자인 도구">
     <meta name="author" content="minus1step">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://minus1step.tistory.com/">
+    <meta name="theme-color" content="#1a1a2e">
     
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://minus1step.tistory.com/">
     <meta property="og:title" content="썸네일 스튜디오 - 무료 블로그 썸네일 제작 도구">
-    <meta property="og:description" content="무료로 다양한 비율의 블로그 썸네일을 쉽고 빠르게 제작하세요. 12가지 프리셋과 한글 폰트 지원.">
-    <meta property="og:image" content="https://minus1step.tistory.com/thumbnail-preview.png">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://minus1step.tistory.com/">
-    <meta property="twitter:title" content="썸네일 스튜디오 - 무료 블로그 썸네일 제작 도구">
-    <meta property="twitter:description" content="무료로 다양한 비율의 블로그 썸네일을 쉽고 빠르게 제작하세요.">
-    <meta property="twitter:image" content="https://minus1step.tistory.com/thumbnail-preview.png">
+    <meta property="og:description" content="다크 미니멀 디자인의 전문적인 썸네일 생성기">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
-    
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#667eea">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RWS3BEEQ84"></script>
@@ -44,37 +31,42 @@
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9257454501555292" crossorigin="anonymous"></script>
     
-    <!-- Bulma CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Black+Han+Sans&family=Jua&family=Nanum+Gothic:wght@400;700;800&family=Do+Hyeon&family=Gamja+Flower&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Sunflower:wght@300;500;700&family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Gugi&family=Poor+Story&family=East+Sea+Dokdo&family=Single+Day&family=Stylish&family=Hi+Melody&family=Cute+Font&family=Dokdo&family=Gaegu:wght@300;400;700&family=Song+Myung&display=swap" rel="stylesheet">
+    <!-- 한글 폰트 서브셋 모두 포함 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Black+Han+Sans&family=Jua&family=Nanum+Gothic:wght@400;700;800&family=Do+Hyeon&family=Gamja+Flower&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+KR:wght@300;400;500;600;700&family=Gothic+A1:wght@300;400;500;600;700&family=Gugi&family=Poor+Story&family=Stylish&family=Hi+Melody&family=Cute+Font&family=Dokdo&family=Gaegu:wght@300;400;700&family=Song+Myung&display=swap&subset=korean" rel="stylesheet">
     
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="bulma-style.css">
+    <!-- 폰트 로딩 최적화 -->
+    <style>
+        @font-face {
+            font-family: 'Font Loading Placeholder';
+            font-display: swap;
+        }
+    </style>
+    
+    <!-- Dark Minimal Glass CSS -->
+    <link rel="stylesheet" href="dark-minimal-glass.css">
 </head>
 <body>
-    <div class="container is-max-widescreen">
+    <div class="container">
         <div class="glass-container">
             <!-- Header -->
-            <div class="glass-header">
-                <h1>✨ 썸네일 스튜디오</h1>
-                <p class="subtitle">다양한 비율로 손쉽게 만드는 블로그 썸네일</p>
+            <header class="glass-header">
+                <h1>썸네일 스튜디오</h1>
                 <a href="https://minus1step.tistory.com/" target="_blank" rel="noopener noreferrer" class="blog-badge">
                     🌐 minus1step.tistory.com
                 </a>
-            </div>
+            </header>
 
             <!-- Main Content -->
             <div class="columns is-variable is-6">
                 <!-- Preview Section -->
                 <div class="column is-7">
-                    <div class="preview-glass">
-                        <h2 class="section-title">미리보기</h2>
-                        <canvas id="canvas" width="1000" height="1000" role="img" aria-label="생성된 썸네일 미리보기"></canvas>
-                    </div>
+                    <section class="preview-glass">
+                        <h2 class="section-title">🖼️ 미리보기</h2>
+                        <canvas id="canvas" width="800" height="800" role="img" aria-label="생성된 썸네일 미리보기"></canvas>
+                    </section>
                     
                     <!-- Action Buttons -->
                     <div class="button-group">
@@ -96,23 +88,27 @@
                 <!-- Controls Section -->
                 <div class="column is-5">
                     <!-- Tabs -->
-                    <div class="control-glass" style="margin-bottom: 1rem;">
-                        <div class="tabs-container">
-                            <button class="tab-button active" onclick="switchTab('basic')">기본 설정</button>
-                            <button class="tab-button" onclick="switchTab('advanced')">고급 설정</button>
+                    <nav class="control-glass">
+                        <div class="tabs-container" role="tablist">
+                            <button class="tab-button active" onclick="switchTab('basic')" role="tab" aria-selected="true">
+                                기본 설정
+                            </button>
+                            <button class="tab-button" onclick="switchTab('advanced')" role="tab" aria-selected="false">
+                                고급 설정
+                            </button>
                         </div>
-                    </div>
+                    </nav>
 
                     <!-- Basic Tab Content -->
-                    <div id="basicTab" class="tab-content active">
+                    <div id="basicTab" class="tab-content active" role="tabpanel">
                         <!-- Text Input -->
                         <div class="control-glass">
                             <div class="field">
                                 <label class="label" for="thumbnailText">썸네일 텍스트</label>
                                 <div class="control">
-                                    <textarea class="textarea" id="thumbnailText" rows="2" placeholder="썸네일에 표시할 텍스트를 입력하세요..." maxlength="200" aria-describedby="textCounter">블로그 썸네일 생성기</textarea>
+                                    <textarea class="textarea" id="thumbnailText" rows="4" placeholder="썸네일에 표시할 텍스트를 입력하세요..." maxlength="200">블로그 썸네일 생성기</textarea>
                                 </div>
-                                <p id="textCounter" class="help has-text-white" style="text-align: right; margin-top: 0.25rem;">0 / 200자</p>
+                                <p id="textCounter" class="help">19 / 200자</p>
                                 <div class="emoji-picker"></div>
                             </div>
                         </div>
@@ -133,7 +129,7 @@
                         <div class="control-glass">
                             <label class="label" id="presetLabel">스타일 프리셋</label>
                             <div class="preset-grid" role="group" aria-labelledby="presetLabel">
-                                <button class="preset-btn-compact active" onclick="applyPreset('modern')" aria-label="모던 스타일" aria-pressed="true">
+                                <button class="preset-btn-compact active" onclick="applyPreset('modern')">
                                     <div class="preset-preview-compact" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
                                     <span>모던</span>
                                 </button>
@@ -187,7 +183,7 @@
                         <!-- Font Size -->
                         <div class="control-glass">
                             <div class="field">
-                                <label class="label">글자 크기 조절 (%)</label>
+                                <label class="label">글자 크기 조절</label>
                                 <div class="field has-addons">
                                     <div class="control is-expanded">
                                         <input type="range" id="fontSizeScale" min="50" max="180" value="100" step="5">
@@ -201,15 +197,7 @@
                     </div>
 
                     <!-- Advanced Tab Content -->
-                    <div id="advancedTab" class="tab-content">
-                        <!-- Recent Colors -->
-                        <div class="control-glass">
-                            <label class="label">최근 사용 색상</label>
-                            <div id="recentColors" class="recent-colors-grid">
-                                <p class="help has-text-white" style="text-align: center; width: 100%;">사용한 색상이 여기에 표시됩니다</p>
-                            </div>
-                        </div>
-                        
+                    <div id="advancedTab" class="tab-content" role="tabpanel">
                         <!-- Colors -->
                         <div class="control-glass">
                             <div class="color-grid">
@@ -239,54 +227,37 @@
                                 <div class="control">
                                     <div class="select is-fullwidth">
                                         <select id="fontFamily">
-                                            <optgroup label="산세리프 - 라이트">
-                                                <option value="'Noto Sans KR', sans-serif" data-weight="300">Noto Sans KR Light</option>
-                                                <option value="'Gothic A1', sans-serif" data-weight="300">Gothic A1 Light</option>
-                                                <option value="'Nanum Gothic', sans-serif" data-weight="400">나눔고딕</option>
-                                                <option value="'Sunflower', sans-serif" data-weight="300">Sunflower Light</option>
-                                            </optgroup>
-                                            <optgroup label="산세리프 - 레귤러">
-                                                <option value="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif" data-weight="400">Apple SD 산돌고딕 Neo</option>
-                                                <option value="'Noto Sans KR', sans-serif" data-weight="500">Noto Sans KR Medium</option>
-                                                <option value="'Gothic A1', sans-serif" data-weight="500">Gothic A1 Medium</option>
-                                                <option value="'Malgun Gothic', sans-serif" data-weight="400">맑은 고딕</option>
-                                                <option value="'Sunflower', sans-serif" data-weight="500">Sunflower Medium</option>
-                                            </optgroup>
-                                            <optgroup label="산세리프 - 볼드">
+                                            <optgroup label="볼드 - 강조">
+                                                <option value="'Black Han Sans', sans-serif" data-weight="400">검은고딕</option>
                                                 <option value="'Noto Sans KR', sans-serif" data-weight="700">Noto Sans KR Bold</option>
                                                 <option value="'Gothic A1', sans-serif" data-weight="700">Gothic A1 Bold</option>
-                                                <option value="'Nanum Gothic', sans-serif" data-weight="800">나눔고딕 볼드</option>
-                                                <option value="'Sunflower', sans-serif" data-weight="700">Sunflower Bold</option>
                                             </optgroup>
-                                            <optgroup label="세리프 - 라이트">
-                                                <option value="'Noto Serif KR', serif" data-weight="300">Noto Serif KR Light</option>
-                                                <option value="'Nanum Myeongjo', serif" data-weight="400">나눔명조</option>
-                                            </optgroup>
-                                            <optgroup label="세리프 - 볼드">
-                                                <option value="'Noto Serif KR', serif" data-weight="700">Noto Serif KR Bold</option>
-                                                <option value="'Nanum Myeongjo', serif" data-weight="800">나눔명조 볼드</option>
-                                                <option value="'Song Myung', serif" data-weight="400">송명체</option>
-                                            </optgroup>
-                                            <optgroup label="디스플레이 - 가벼움">
-                                                <option value="'Gaegu', cursive" data-weight="300">개구체 Light</option>
-                                                <option value="'Poor Story', cursive" data-weight="400">훌스토리</option>
-                                                <option value="'Stylish', sans-serif" data-weight="400">스타일리시</option>
-                                            </optgroup>
-                                            <optgroup label="디스플레이 - 중간">
+                                            <optgroup label="미디엄 - 균형">
+                                                <option value="'Noto Sans KR', sans-serif" data-weight="500">Noto Sans KR Medium</option>
+                                                <option value="'Gothic A1', sans-serif" data-weight="500">Gothic A1 Medium</option>
                                                 <option value="'Do Hyeon', sans-serif" data-weight="400">도현체</option>
                                                 <option value="'Jua', sans-serif" data-weight="400">주아체</option>
-                                                <option value="'Single Day', cursive" data-weight="400">싱글데이</option>
-                                                <option value="'Hi Melody', cursive" data-weight="400">하이멜로디</option>
                                             </optgroup>
-                                            <optgroup label="디스플레이 - 굵게">
-                                                <option value="'Black Han Sans', sans-serif" data-weight="400">검은고딕</option>
-                                                <option value="'Gugi', cursive" data-weight="400">구기체</option>
+                                            <optgroup label="라이트 - 섬세">
+                                                <option value="'Noto Sans KR', sans-serif" data-weight="300">Noto Sans KR Light</option>
+                                                <option value="'Gothic A1', sans-serif" data-weight="300">Gothic A1 Light</option>
                                             </optgroup>
-                                            <optgroup label="손글씨">
-                                                <option value="'Gamja Flower', cursive" data-weight="400">감자꽃체</option>
+                                            <optgroup label="명조 - 클래식">
+                                                <option value="'Nanum Myeongjo', serif" data-weight="700">나눔명조 Bold</option>
+                                                <option value="'Nanum Myeongjo', serif" data-weight="400">나눔명조</option>
+                                                <option value="'Noto Serif KR', serif" data-weight="700">본명조 Bold</option>
+                                                <option value="'Noto Serif KR', serif" data-weight="500">본명조</option>
+                                            </optgroup>
+                                            <optgroup label="손글씨 - 친근">
+                                                <option value="'Gamja Flower', cursive" data-weight="400">감자꽃</option>
                                                 <option value="'Cute Font', cursive" data-weight="400">큐트폰트</option>
-                                                <option value="'Dokdo', cursive" data-weight="400">독도체</option>
-                                                <option value="'East Sea Dokdo', cursive" data-weight="400">동해독도체</option>
+                                                <option value="'Hi Melody', cursive" data-weight="400">하이멜로디</option>
+                                                <option value="'Gaegu', cursive" data-weight="400">개구쟁이</option>
+                                            </optgroup>
+                                            <optgroup label="스페셜 - 독특">
+                                                <option value="'Gugi', cursive" data-weight="400">구기체</option>
+                                                <option value="'Stylish', sans-serif" data-weight="400">스타일리시</option>
+                                                <option value="'Poor Story', cursive" data-weight="400">가난한 이야기</option>
                                             </optgroup>
                                         </select>
                                     </div>
@@ -362,6 +333,13 @@
     </div>
 
     <!-- JavaScript -->
-    <script src="bulma-app.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/colors.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/presets.js"></script>
+    <script src="js/canvas.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/init.js"></script>
 </body>
 </html>
